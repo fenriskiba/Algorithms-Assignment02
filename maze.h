@@ -3,17 +3,19 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
+#include <cmath>
 
 using namespace std;
 
 class Maze
 {
     private:
-        bool** matrix;
+        int** matrix;
         int size;
     public:
         Maze(int);
-        //Maze(string);
+        Maze(string);
         
         void printMaze();
         void randomizeMaze(double);

@@ -8,7 +8,9 @@ int main(int argc, char *argv[])
     
     if(argc == 2)
     {
-        cout << "Part 2" << endl;
+        string fileName = argv[1];
+        Maze mazeRunner(fileName);
+        mazeRunner.printMaze();
     }
     else if(argc == 4)
     {
