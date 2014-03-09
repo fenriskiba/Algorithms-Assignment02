@@ -11,7 +11,7 @@ using namespace std;
 class Maze
 {
     private:
-        int** matrix;
+        int* matrix;
         int size;
     public:
         Maze(int);

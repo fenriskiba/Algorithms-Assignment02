@@ -4,13 +4,8 @@ using namespace std;
 
 Maze::Maze(int s)
 {
-    size = s;
-    matrix = new int*[size];
-    
-    for(int i = 0; i < size; i++)
-    {
-        matrix[i] = new int[size];
-    }
+    size = s * s;
+    matrix = new int[size];
 }
 Maze::Maze(string fileName)
 {
@@ -22,7 +17,7 @@ Maze::Maze(string fileName)
     infile.open(fileName.c_str(), ios_base::in);
     if(!infile)
     {
-        cout << "cannot be opened"<<endl;
+        cout << "cannot be opened" << endl;
     }
     
     //Collect the file into a string and close it
@@ -33,37 +28,24 @@ Maze::Maze(string fileName)
     infile.close();
     
     //Convert the string to a new array
-    size = pow(tempArray.length(),0.5);
-    
-    //Generate the new array
-    matrix = new int*[size];
-    
+    size = tempArray.length();
+    matrix = new int[size];
     for(int i = 0; i < size; i++)
     {
-        matrix[i] = new int[size];
-    }
-    
-    //Move the string value over to the array
-    int stringCount = 0;
-    for(int i = 0; i < size; i++)
-    {
-        for(int x = 0; x < size; x++)
-        {
-            matrix[i][x] = tempArray[stringCount] - '0';
-            stringCount++;
-        }
+        matrix[i] = tempArray[i] - '0';
     }
 }
 
 void Maze::printMaze()
 {
+    int matrixSize = pow(size, 0.5);
     for(int i = 0; i < size; i++)
     {
-        for(int x = 0; x < size; x++)
+        cout << matrix[i] << " ";
+        if((i + 1) % matrixSize == 0)
         {
-            cout << matrix[i][x] << " ";
+            cout << endl;
         }
-        cout << endl;
     }
 }
 
@@ -74,17 +56,14 @@ void Maze::randomizeMaze(double percolationProbability)
     
     for(int i = 0; i < size; i++)
     {
-        for(int x = 0; x < size; x++)
+        int randomNumber = rand() % 100;
+        if(randomNumber < percolationProbability)
         {
-            int randomNumber = rand() % 100;
-            if(randomNumber < percolationProbability)
-            {
-                matrix[i][x] = 1;
-            }
-            else
-            {
-                matrix[i][x] = 0;
-            }
+            matrix[i] = 1;
+        }
+        else
+        {
+            matrix[i] = 0;
         }
     }
 }
