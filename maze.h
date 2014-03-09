@@ -2,6 +2,7 @@
 #define	BIGINT_H
 
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -15,6 +16,8 @@ class Maze
         //Maze(string);
         
         void printMaze();
+        void randomizeMaze(double);
+        //bool unionFind();
 };
 
 #endif
