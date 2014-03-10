@@ -12,6 +12,7 @@ class Maze
 {
     private:
         int* matrix;
+        int* parentMatrix;
         int size;
     public:
         Maze(int);
@@ -19,7 +20,11 @@ class Maze
         
         void printMaze();
         void randomizeMaze(double);
-        //bool unionFind();
+        bool hasPass();
+        
+        void combineWithParent();
+        void unionElements(int, int);
+        int findRoot(int);
 };
 
 #endif
