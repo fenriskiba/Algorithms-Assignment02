@@ -63,7 +63,6 @@ void Maze::printMaze()
 
 void Maze::randomizeMaze(double percolationProbability)
 {
-    srand(time(0));
     percolationProbability *= 100;
     
     for(int i = 0; i < size; i++)
@@ -96,6 +95,20 @@ bool Maze::hasPass()
     }
     
     return false;
+}
+
+int Maze::numberOfClusters()
+{
+    int index = 0;
+    for(int i = 0; i < size; i++)
+    {
+        if(matrix[i] == 1 && parentMatrix[i] == -1)
+        {
+            index++;
+        }
+    }
+
+    return index;
 }
 
 void Maze::combineWithParent()

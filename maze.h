@@ -14,6 +14,7 @@ class Maze
         int* matrix;
         int* parentMatrix;
         int size;
+        
     public:
         Maze(int);
         Maze(string);
@@ -21,7 +22,9 @@ class Maze
         void printMaze();
         void randomizeMaze(double);
         bool hasPass();
-        
+        int numberOfClusters();
+    
+    private:
         void combineWithParent();
         void unionElements(int, int);
         int findRoot(int);
